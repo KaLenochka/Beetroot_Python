@@ -1,0 +1,11 @@
+#'What a wonderful life'
+print("What a wonderful life")
+
+#'a,b,c,d,e,f,g'
+print('a,b,c,d,e,f,g')
+
+#'1WOW2WOW3'
+print(1,2,3, sep='WOW')
+
+#'1WOW2WOW3!!!'
+print(1,2,3, sep='WOW', end='!!!')
