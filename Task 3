@@ -1,0 +1,11 @@
+a='#'
+print(a*9)
+print(a,a, sep='\t')
+print(a,a, sep='\t')
+print(a,a, sep='\t')
+print(a*9, end='\n\n')
+print(a,a, sep='\t')
+print(a,a, sep='\t')
+print(a*9)
+print(a,a, sep='\t')
+print(a,a, sep='\t')
