@@ -1,0 +1,6 @@
+my_name = 'Lena'
+day_of_week = 'THURSDAY'
+
+print(f'Good day {my_name.upper()}!\
+ {day_of_week.lower()} is a perfect day to learn some python')
+      
