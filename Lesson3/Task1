@@ -12,9 +12,9 @@
 # Use positive indexing to get the first characters of a string
 # and negative indexing to get the last characters
 
-s = 'x'
+string = 'x'
 
-if len(s) < 2:
+if len(string) < 2:
     print('')
 else:
-    print(s[:2] + s[-2:])
+    print(string[:2] + string[-2:])
