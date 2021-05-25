@@ -1,0 +1,18 @@
+# Task 2
+# The birthday greeting program.
+# Write a program that takes your name as input, and then your age as input
+# and greets you with the following:
+# “Hello <name>, on your next birthday you’ll be <age+1> years”
+
+print('Let\'s get to know you!')
+customer_name = input('Enter your name, please: ')
+customer_age = input('Enter your age, please: ')
+
+while not customer_age.isdigit():
+    print('Your input was in the wrong format! Your age must be a digit!')
+    customer_age = input('Enter your age, please: ')
+    if customer_age.isdigit():
+        break
+
+customer_age = int(customer_age) + 1
+print(f'Hello {customer_name}, on your next birthday you\'ll be {customer_age} years')
