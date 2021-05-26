@@ -1,0 +1,42 @@
+# Task 3
+# Words combination
+# Create a program that reads an input string and then creates and prints 5 random strings
+# from characters of the input string.
+# For example, the program obtained the word ‘hello’, so it should print 5 random strings(words)
+# that combine characters ‘h’, ‘e’, ‘l’, ‘l’, ‘o’ -> ‘hlelo’, ‘olelh’, ‘loleh’ …
+# Tips: Use random module to get random char from string)
+
+from random import *
+
+in_word = input('Enter the word from 5 letters: ')
+while len(in_word) != 5:
+    print('Your word doesn\'t have 5 letters! Try again: ')
+    in_word = input('Enter the word from 5 letters: ')
+
+in_word_clone = in_word[:]
+our_threshold = 5
+i = 0
+
+while i < our_threshold:
+    char1 = randint(0, len(in_word_clone) - 1)
+    letter1 = in_word_clone[char1]
+    in_word = in_word_clone[:char1] + in_word_clone[(char1+1):]
+
+    char2 = randint(0, len(in_word) - 1)
+    letter2 = in_word[char2]
+    in_word = in_word[:char2] + in_word[(char2+1):]
+
+    char3 = randint(0, len(in_word) - 1)
+    letter3 = in_word[char3]
+    in_word = in_word[:char3] + in_word[(char3+1):]
+
+    char4 = randint(0, len(in_word) - 1)
+    letter4 = in_word[char4]
+    in_word = in_word[:char4] + in_word[(char4+1):]
+
+    char5 = randint(0, len(in_word) - 1)
+    letter5 = in_word[char5]
+    in_word = in_word[:char5] + in_word[(char5+1):]
+    new_word = letter1 + letter2 + letter3 + letter4 + letter5
+    print(new_word)
+    i += 1
