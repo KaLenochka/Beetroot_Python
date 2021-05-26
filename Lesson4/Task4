@@ -1,0 +1,26 @@
+# Task 4
+# The math quiz program
+# Write a program that asks the answer for a mathematical expression,
+# checks whether the user is right or wrong, and then responds with a message accordingly.
+
+from random import *
+
+print('Let\'s remember the multiplication table!')
+yes_no = input('If you are ready, press 1. Press any other key to quit: ')
+
+while yes_no == '1':
+   first_var = randint(1, 9)
+   second_var = randint(1, 9)
+   answer = first_var * second_var
+
+   player = input(f'{first_var} * {second_var} = ')
+   if int(player) == answer:
+       print('Cogratulations!!! You are right!')
+       yes_no = input('If you want to continue, press 1. Press any other key to quit: ')
+       if yes_no == '1':
+           continue
+   else:
+       print(f'You lost! The answer is {answer}.')
+       yes_no = input('If you want to try again, press 1. Press any other key to quit: ')
+else:
+    print('See you next time!')
