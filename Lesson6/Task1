@@ -1,0 +1,22 @@
+# Task 1
+# Make a program that has some sentence (a string) on input and returns a dict
+# containing all unique words as keys and the number of occurrences as values.
+
+# Для проверки предлагаю Вам текст, чтоб не искать:
+# Я Колобок, Колобок,Я по коробу скребен,По сусеку метен,На сметане мешон Да в масле пряжон,На окошке стужон.
+
+some_sentence = input('Enter the text: ')
+some_sentence = some_sentence.lower()
+
+punct_marks = ['.', ',', '/', '<', '>', '?', ';', ':', '"', '\'', '`', '~', '!', '@', '#', '$', '%', '^', '&',
+               '*', '(', ')', '_', '-', '=', '+', '\\', '|', '/', '[', ']', '{', '}']
+
+i = 0
+while i <= len(punct_marks) - 1:
+    some_sentence = some_sentence.replace(punct_marks[i], ' ')
+    i += 1
+
+some_sentence = some_sentence.split()
+words_dict = {word: some_sentence.count(word) for word in some_sentence}
+
+print(words_dict)
