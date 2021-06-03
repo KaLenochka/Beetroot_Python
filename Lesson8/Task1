@@ -1,0 +1,28 @@
+# Task 1
+# Write a function called oops that explicitly raises an IndexError exception when called.
+# Then write another function that calls oops inside a try/except statement to catch the error.
+# What happens if you change oops to raise KeyError instead of IndexError?
+
+def oops():
+    raise IndexError
+
+
+def catch_function():
+    try:
+        oops()
+    except IndexError:
+        print('We caught this error!')
+
+
+catch_function()
+'''
+If I change oops to raise KeyError instead of IndexError, we'll have such error:
+
+Traceback (most recent call last):
+  File "C:/Users/Lena/PycharmProjects/pythonProject/main.py", line 17, in <module>
+    catch_function()
+  File "C:/Users/Lena/PycharmProjects/pythonProject/main.py", line 12, in catch_function
+    oops()
+  File "C:/Users/Lena/PycharmProjects/pythonProject/main.py", line 7, in oops
+    raise KeyError
+KeyError'''
