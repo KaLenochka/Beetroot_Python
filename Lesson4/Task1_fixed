@@ -1,0 +1,23 @@
+# Task 1
+# The Guessing Game.
+# Write a program that generates a random number between 1 and 10
+# and lets the user guess what number was generated.
+# The result should be sent back to the user via a print statement.
+import random
+
+print('Hello! Let\'s play!')
+player = input('Try to guess a number! Enter the digit from 1 to 10: ')
+computer = random.randint(1, 10)
+
+while not player.isdigit():
+    print('Your input was in the wrong format! Try again!')
+    player = input('Try to guess a number! Enter the digit from 1 to 10: ')
+
+player = int(player)
+
+if player == computer:
+    print(f'The number was {computer}. Congratulations!!! You win!')
+elif player > 10 or player <= 0:
+    print('Your digit have to be from 1 to 10! Sorry, you lost!')
+else:
+    print(f'The number was {computer}. Sorry, you lost!')
