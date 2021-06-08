@@ -1,0 +1,9 @@
+1 - Add new entries 
+2 - Search by first name 
+3 - Search by last name 
+4 - Search by full name
+5 - Search by telephone number
+6 - Search by city or state
+7 - Delete a record for a given telephone number
+8 - Update a record for a given telephone number
+9 - An option to exit the program

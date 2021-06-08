@@ -1,0 +1,22 @@
+{
+    "1234567890": {
+        "first_name": "Lena",
+        "last_name": "Dolinchuk",
+        "city": "Mykolaiv"
+    },
+    "1234567891": {
+        "first_name": "Lena",
+        "last_name": "Ivanova",
+        "city": "Kyiv"
+    },
+    "1234567892": {
+        "first_name": "Olga",
+        "last_name": "Davydova",
+        "city": "Odesa"
+    },
+    "1232343458": {
+        "first_name": "Igor",
+        "last_name": "koval",
+        "city": "kherson"
+    }
+}
