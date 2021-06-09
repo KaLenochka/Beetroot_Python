@@ -1,7 +1,0 @@
-# Task 1_1
-# Files
-# Write a script that creates a new output file called myfile.txt and writes the string "Hello file world!" in it.
-
-with open('myfile.txt', 'w') as hello_file:
-    hello_file.write('Hello file world!\n')
-    
