@@ -1,0 +1,16 @@
+# Task 1_1
+# Files
+# Write a script that creates a new output file called myfile.txt and writes the string "Hello file world!" in it.
+
+try:
+    with open('myfile.txt', 'w') as hello_file:
+        hello_file.write('Hello file world!\n')
+
+except FileExistsError:
+    print('File already exists!')
+except FileNotFoundError:
+    print('File does not exists!')
+except PermissionError:
+    print('Insufficient permission to access the file!')
+except OSError:
+    print('Something went wrong!')
