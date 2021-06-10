@@ -1,0 +1,103 @@
+# Task 3
+# TV controller
+# Create a simple prototype of a TV controller in Python. It’ll use the following commands:
+#
+#  ** first_channel() - turns on the first channel from the list.
+#  ** last_channel() - turns on the last channel from the list.
+#  ** turn_channel(N) - turns on the N channel.
+#     Pay attention that the channel numbers start from 1, not from 0.
+#  ** next_channel() - turns on the next channel.
+#     If the current channel is the last one, turns on the first channel.
+#  ** previous_channel() - turns on the previous channel.
+#     If the current channel is the first one, turns on the last channel.
+#  ** current_channel() - returns the name of the current channel.
+#  ** is_exist(N/'name') - gets 1 argument - the number N or the string 'name' and returns "Yes",
+#     if the channel N or 'name' exists in the list, or "No" - in the other case.
+#
+# The default channel turned on before all commands is №1.
+# Your task is to create the TVController class and methods described above.
+# ```
+# CHANNELS = ["BBC", "Discovery", "TV1000"]
+# class TVController:
+# pass
+#
+# controller = TVController(CHANNELS)
+# controller.first_channel() == "BBC"
+# controller.last_channel() == "TV1000"
+# controller.turn_channel(1) == "BBC"
+# controller.next_channel() == "Discovery"
+# controller.previous_channel() == "BBC"
+# controller.current_channel() == "BBC"
+# controller.is_exist(4) == "No"
+# controller.is_exist("BBC") == "Yes"
+# ```
+
+CHANNELS = ["BBC", "Discovery", "TV1000"]
+
+
+class TVController():
+    ''' Class of the parts of TV Controller'''
+
+    def __init__(self):
+        self.number = 1  # The default channel turned on before all commands is №1
+        self.name = 'BBC'
+
+    def first_channel(self):
+        self.number = 1
+        self.name = CHANNELS[int(self.number) - 1]
+        return self.name
+
+    def last_channel(self):
+        self.number = len(CHANNELS)
+        self.name = CHANNELS[int(self.number) - 1]
+        return self.name
+
+    def turn_channel(self, n):
+        self.number = n
+        self.name = CHANNELS[int(self.number) - 1]
+        return self.name
+
+    def next_channel(self):
+        if self.number == 3:
+            self.number = 1
+        else:
+            self.number += 1
+        self.name = CHANNELS[int(self.number) - 1]
+        return self.name
+
+    def previous_channel(self):
+        if self.number == 1:
+            self.number = 3
+        else:
+            self.number -= 1
+        self.name = CHANNELS[int(self.number) - 1]
+        return self.name
+
+    def current_channel(self):
+        return self.name
+
+    def is_exist(self, arg):  # arg is the number N or the string 'name'
+        try:
+            if arg in CHANNELS or 1 <= int(arg) <= len(CHANNELS):
+                print('Yes')
+            else:
+                print('No')
+        except ValueError:
+            print("'arg' must be the number N or the string 'name', edit the argument, please!")
+
+
+def main():
+    controller = TVController()
+
+    print(controller.first_channel())
+    print(controller.last_channel())
+    print(controller.turn_channel(1))
+    print(controller.next_channel())
+    print(controller.previous_channel())
+    print(controller.current_channel())
+    controller.is_exist(4)
+    controller.is_exist('BBC')
+
+
+if __name__ == '__main__':
+    main()
