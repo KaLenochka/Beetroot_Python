@@ -1,0 +1,33 @@
+# Task 1
+# School
+# Make a class structure in python representing people at school. Make a base class called Person,
+# a class called Student, and another one called Teacher. Try to find as many methods and attributes as you can
+# which belong to different classes, and keep in mind which are common and which are not.
+# For example, the name should be a Person attribute, while salary should only be available to the teacher.
+import numba
+
+
+class Person:
+    '''The based class of people at school'''
+    def __init__(self, first_name, last_name, id_code):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.id_code = id_code  # The unique identifier
+
+
+class Student(Person):
+    '''The class for students'''
+    def __init__(self, first_name, last_name, id_code, num_class, level_of_student):
+        super.__init__(first_name, last_name)
+        self.id_code = num_student_card  # Unique identifier for student is the number of his/her student card
+        self.num_class = num_class       # The number of student's' class
+        self.level_of_student = level_of_student  # The level of student's knowledge
+
+
+class Teacher(Person):
+    '''The class for teachers'''
+    def __init__(self, first_name, last_name, id_code, salary, subject):
+        super.__init__(first_name, last_name)
+        self.id_code = tax_num  # Unique identifier for teacher is his/her tax number
+        self.salary = salary    # The month's salary
+        self.subject = subject  # The teaching subject
