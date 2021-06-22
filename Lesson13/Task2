@@ -1,0 +1,25 @@
+# Task 2
+# Write a Python program to access a function inside a function
+# (Tips: use function, which returns another function)
+
+def first_foo(string):
+    """
+    Adds the star '*' after each symbol of the string
+    :param string: any string
+    :return: the string with the stars after each symbol
+    """
+
+    def add_star(n):
+        n += '*'
+        return n
+    res = ''
+    for i in string:
+        res += add_star(i)
+
+    return res
+
+
+try:
+    print(first_foo('2565468357'))
+except NameError:
+    print('Your input is not a string!')
