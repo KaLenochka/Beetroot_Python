@@ -1,0 +1,57 @@
+# Task 3
+# Write a decorator `arg_rules` that validates arguments passed to the function.
+#
+# A decorator should take 3 arguments:
+# max_length: 15
+# type_: str
+# contains: [] - list of symbols that an argument should contain
+#
+# If some of the rules' checks returns False, the function should return False and print the reason it failed;
+# otherwise, return the result.
+
+# def arg_rules(type_: type, max_length: int, contains: list):
+#     pass
+#
+# @arg_rules(type_=str, max_length=15, contains=['05', '@'])
+# def create_slogan(name: str) -> str:
+#     return f"{name} drinks pepsi in his brand new BMW!"
+#
+# assert create_slogan('johndoe05@gmail.com') is False
+#
+# assert create_slogan('S@SH05') == 'S@SH05 drinks pepsi in his brand new BMW!'
+
+from functools import wraps
+
+
+def arg_rules(type_: type, max_length: int, contains: list):
+    def arg_rules_dec(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            if type(*args) == type_:
+                if len(*args) <= max_length:
+                    for sym in contains:
+                        if sym in str(args):
+                            continue
+                        else:
+                            print(f'The argument has to contain {sym}')
+                            return False
+                    return result
+                else:
+                    print(f'The max length of the argument has to be <= {max_length}')
+                    return False
+            else:
+                print(f'The type of the argument has to be {type_}')
+                return False
+        return wrapper
+    return arg_rules_dec
+
+
+@arg_rules(type_=str, max_length=15, contains=['05', '@'])
+def create_slogan(name: str) -> str:
+    return f"{name} drinks pepsi in his brand new BMW!"
+
+
+print(create_slogan('johndoe05@gmail.com'))
+
+print(create_slogan('S@SH05'))
