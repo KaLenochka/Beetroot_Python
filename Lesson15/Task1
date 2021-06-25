@@ -1,0 +1,28 @@
+# Task 1
+# Create a class method named `validate`, which should be called from the `__init__` method
+# to validate parameter email, passed to the constructor.
+# The logic inside the `validate` method could be to check if the passed email parameter is a valid email string.
+
+import re
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+
+
+class Mail:
+
+    def __init__(self, email):
+        self.email = email
+
+    @property
+    def validate(self):
+        if (re.search(regex, self.email)):
+            return self.email
+        else:
+            return False
+
+
+x = Mail('fg@mail.com')
+y = Mail('12323*mail.com')
+
+print(x.validate)
+print(y.validate)
+
