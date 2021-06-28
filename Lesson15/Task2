@@ -1,0 +1,111 @@
+# Task 2
+# Implement 2 classes, the first one is the Boss and the second one is the Worker.
+# Worker has a property 'boss', and its value must be an instance of Boss.
+# You can reassign this value, but you should check whether the new value is Boss.
+# Each Boss has a list of his own workers. You should implement a method that allows you to add workers to a Boss.
+# You're not allowed to add instances of Boss class to workers list directly via access to attribute,
+# use getters and setters instead!
+#
+# You can refactor the existing code.
+#
+# id_ - is just a random unique integer
+# class Boss:
+#     def __init__(self, id_: int, name: str, company: str):
+#         self.id = id_
+#         self.name = name
+#         self.company = company
+#         self.workers = []
+#
+# class Worker:
+#     def __init__(self, id_: int, name: str, company: str, boss: Boss):
+#         self.id = id_
+#         self.name = name
+#         self.company = company
+#         self.boss = boss
+
+class Person:
+    """
+    The general class for all cooperators.
+    """
+    def __init__(self, id_, name, company):
+        self.id_ = id_
+        self.name = name
+        self.company = company
+
+    def __str__(self):
+        return f'{self.id_}, {self.name}, {self.company}'
+
+    def __repr__(self):
+        return f'{self.id_}, {self.name}, {self.company}'
+
+
+class Boss(Person):
+    """
+    The class for Bosses.
+    Includes attributes from Person and plus the list of his/her workers.
+    The setter-method of this class checks if value 'worker' is an instance of class 'Workers'.
+    """
+    def __init__(self, id_, name, company):
+        super().__init__(id_, name, company)
+        self._workers = []
+
+    @property
+    def add_workers(self):
+        return self._workers
+
+    @add_workers.setter
+    def add_workers(self, prop_worker):
+        if isinstance(prop_worker, Worker):
+            self._workers.append([prop_worker])
+            print(self._workers)
+        else:
+            raise AttributeError(f'{prop_worker} is not an instance of Worker!')
+
+
+class Worker(Person):
+    """
+        The class for Workers.
+        Includes attributes from Person and plus his/her boss.
+        The setter- and init-method of this class checks if value 'boss' is an instance of class 'Boss'.
+        """
+    def __init__(self, id_, name, company, boss):
+        super().__init__(id_, name, company)
+        if isinstance(boss, Boss):
+            self.boss = boss
+        else:
+            raise AttributeError(f'{boss} is not an instance of Boss!')
+
+    @property
+    def check_boss(self):
+        return self.boss
+
+    @check_boss.setter
+    def check_boss(self, prop_boss):
+        if isinstance(prop_boss, Boss):
+            self.boss = prop_boss
+        else:
+            raise AttributeError(f'{prop_boss} is not an instance of Boss!')
+        print(self.boss)
+
+
+boss_cham = Boss(1, 'Ivan', 'Chamomile')
+worker_cham_1 = Worker(11, 'Vasya', 'Chamomile', boss_cham)
+worker_cham_2 = Worker(12, 'Natasha', 'Chamomile', boss_cham)
+
+boss_straw = Boss(2, 'Petro', 'Strawberry')
+worker_straw_1 = Worker(21, 'Masha', 'Strawberry', boss_straw)
+worker_straw_2 = Worker(22, 'Lesya', 'Strawberry', boss_straw)
+worker_straw_3 = Worker(23, 'Kostya', 'Strawberry', boss_straw)
+
+try:
+    boss_cham.add_workers = worker_cham_1
+    boss_cham.add_workers = worker_cham_2
+
+    # worker_cham_2.check_boss = worker_cham_1    # Чтоб проверить, раскомментируете!
+
+    # boss_straw.add_workers = boss_cham          # Чтоб проверить, раскомментируете!
+    boss_straw.add_workers = worker_straw_1
+    boss_straw.add_workers = worker_straw_2
+    boss_straw.add_workers = worker_straw_3
+except AttributeError as error_msg:
+    print(error_msg)
