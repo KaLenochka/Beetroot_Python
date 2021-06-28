@@ -1,0 +1,61 @@
+# Task 3
+# Write a class TypeDecorators which has several methods
+# for converting results of functions to a specified type (if it's possible):
+# methods:
+# to_int
+# to_str
+# to_bool
+# to_float
+# Don't forget to use @wraps
+# ------------------------------
+# class TypeDecorators:
+#     pass
+#
+# @TypeDecorators.to_int
+# def do_nothing(string: str):
+#     return string
+#
+# @TypeDecorators.to_bool
+# def do_something(string: str):
+#     return string
+#
+# assert do_nothing('25') == 25
+# assert do_something('True') is True
+
+from functools import wraps
+
+
+class TypeDecorators:
+
+    @classmethod  # method 'to_int' converts the result of argument-function into type you choose, like argument
+    def to_(cls, type_):
+        def transform(func):
+            @wraps(func)
+            def wrapper(*args, **kwargs):
+                func(*args, **kwargs)
+                try:
+                    value = type_(*args, **kwargs)
+                    print(value, type(value))
+                except ValueError:
+                    print(f'It is not possible to convert the result into {type_}!')
+            return wrapper
+        return transform
+
+
+@TypeDecorators.to_(int)
+def do_nothing(string):
+    return string
+
+
+@TypeDecorators.to_(bool)
+def do_something(string):
+    return string
+
+
+try:
+    do_nothing('25')
+    do_something('True')
+except NameError as error_msg:
+    print(error_msg)
+except TypeError as error_msg:
+    print(error_msg)
