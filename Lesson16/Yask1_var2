@@ -1,0 +1,18 @@
+# Task 1
+# Create your own implementation of a built-in function enumerate, named `with_index`,
+# which takes two parameters: `iterable` and `start`, default is 0.
+# Tips: see the documentation for the enumerate function
+
+def with_index(iterable, start=0):
+    n = int(start)
+    for elem in iterable:
+        yield n, elem
+        n += 1
+
+
+try:
+    print(list(with_index('qwerty', 4)))
+except TypeError:
+    print('Chek the arguments! The have incorrect characters!')
+except ValueError:
+    print("The argument 'start' has to be the number!")
