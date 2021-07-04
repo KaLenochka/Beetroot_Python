@@ -1,0 +1,23 @@
+# Task 2
+# Create your own implementation of a built-in function range, named in_range(),
+# which takes three parameters: `start`, `end`, and optional step.
+# Tips: See the documentation for `range` function
+
+
+def in_range(start, end, step=1):
+    if step > 0:
+        while start <= end:
+            yield start
+            start += step
+    elif step < 0:
+        while start >= end:
+            yield start
+            start += step
+    else:
+        raise ValueError('The step can not be zero!')
+
+
+try:
+    print(list(in_range(15, -5, 0)))
+except ValueError as error_msg:
+    print(error_msg)
