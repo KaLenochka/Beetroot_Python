@@ -1,0 +1,5 @@
+import mymod
+
+print(mymod.test('file.txt'))
+print('*' * 50)
+print(mymod.test('mymod.py'))
