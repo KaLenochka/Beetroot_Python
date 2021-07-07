@@ -1,7 +1,0 @@
-#  ...
-#  then import this function in the other module and use that in your script of choice.
-
-from Lesson18_Task1_1 import my_foo
-
-friend = 'Sasha'
-print(my_foo(friend))
