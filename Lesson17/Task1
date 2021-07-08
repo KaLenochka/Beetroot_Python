@@ -1,0 +1,23 @@
+import unittest
+import Lessons.Lesson11_Task2
+
+
+class MathTestCase(unittest.TestCase):
+
+    def setUp(self):
+        self.list1 = Lessons.Lesson11_Task2.DataForMath()
+
+    def test_square_nums(self):
+        self.assertEqual(self.list1.square_nums([1, 2, 3, 4, 5]), [1, 4, 9, 16, 25])
+        self.assertRaises(TypeError, self.list1.square_nums(['one', 2, 3]))
+
+    def test_remove_positives(self):
+        self.assertEqual(self.list1.remove_positives([1, -2, 3, -4, 5, -6, 7]), [-2, -4, -6])
+        self.assertRaises(TypeError, self.list1.remove_positives([(1, 2, 3), 2, 4]))
+
+    def test_filter_leaps(self):
+        self.assertEqual(self.list1.filter_leaps([2017, 2018, 2019, 2020, 2021]), [2020])
+        self.assertRaises(TypeError, self.list1.filter_leaps(['twenty twenty', 2020, 2021]))
+
+
+unittest.main()
