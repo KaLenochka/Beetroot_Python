@@ -1,0 +1,26 @@
+# Task 5
+# def sum_of_digits(digit_string: str) -> int:
+#     """
+#     >>> sum_of_digits('26') == 8
+#     True
+#
+#     >>> sum_of_digits('test')
+#     ValueError("input string must be digit string")
+
+def sum_of_digits(digit_string: str) -> int:
+    """
+    Function sums the digits from the string.
+    Input string must be digit string.
+    """
+    if not digit_string.isdigit():
+        raise ValueError('Input string must be digit string!')
+    elif len(digit_string) == 1:
+        return int(digit_string)
+    return int(digit_string[0]) + sum_of_digits(digit_string[1:])
+
+
+try:
+    print(sum_of_digits('26'))
+    print(sum_of_digits('test'))
+except ValueError as er_msg:
+    print(er_msg)
