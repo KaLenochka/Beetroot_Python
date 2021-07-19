@@ -1,0 +1,34 @@
+# Task 2
+# Write a program that reads in a sequence of characters, and determines
+# whether it's parentheses, braces, and curly brackets are "balanced."
+
+from stack import Stack
+
+
+def balanced_sequence() -> bool:
+    input_seq = input('Input the sequence you want to check if it is balanced: ')
+    stack_parentheses = Stack()
+    stack_square_brackets = Stack()
+    stack_curly_brackets = Stack()
+    for char in input_seq:
+        if char == '(':
+            stack_parentheses.push(char)
+        elif char == '[':
+            stack_square_brackets.push(char)
+        elif char == '{':
+            stack_curly_brackets.push(char)
+        elif char == ')':
+            stack_parentheses.pop()
+        elif char == ']':
+            stack_square_brackets.pop()
+        elif char == '}':
+            stack_curly_brackets.pop()
+    if stack_parentheses.is_empty() and stack_square_brackets.is_empty() and stack_curly_brackets.is_empty():
+        is_balanced = True
+    else:
+        is_balanced = False
+
+    return is_balanced
+
+
+print(balanced_sequence())
